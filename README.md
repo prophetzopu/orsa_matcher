@@ -8,11 +8,11 @@ Simple tool for matching teams in the ORSA competitive pool
 
 Add `C:\Go\bin` to your system `%PATH`. Open the System control panel -> Advanced system settings -> Environment Variables.
 
-From powershell or cmd prompt, create a directory from your project.
+From powershell or cmd prompt, create a directory from your project, and set your GOPATH (you’ll have to repeat this for each cmd prompt)
 ```
 C:\Users\me>mkdir path\to\my\project
 C:\Users\me>cd path\to\my\project
-C:\Users\me\path\to\my\project> 
+C:\Users\me\path\to\my\project>set GOPATH=C:\Users\me\path\to\my\project
 ```
 
 Pull down this project
@@ -33,7 +33,7 @@ C:\project>go build github.com/adamschaub/orsa_matcher/cli
 
 ## Running
 
-Ezpz. The CLI has a number of flags
+The CLI has a number of options
 ```
 -format string
     One of 3v3/2v2/1v1 (default "3v3")
