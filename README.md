@@ -51,7 +51,7 @@ Download your spreadsheets as individual CSV files (File -> Download As in googl
 
 Once you have a file for the previous groups and the current ranks, just run
 ```
-C:\project>cli -week 3 -format 3v3 -platform pcps4 -ranks \path\to\ranks.csv -groups \path\to\ranks.csv
+C:\project>cli -week 3 -format 3v3 -platform pcps4 -ranks \path\to\ranks.csv -groups \path\to\groups.csv
 ```
 
 Which will output a list of matches in Reddit markdown, as well as a simple CSV of all the matches created.
