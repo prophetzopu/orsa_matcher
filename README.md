@@ -35,18 +35,54 @@ C:\project>go build github.com/adamschaub/orsa_matcher/cli
 
 The CLI has a number of options
 ```
--format string
-    One of 3v3/2v2/1v1 (default "3v3")
--groups string
-    REQUIRED: CSV file with previous team groups
--platform string
-    Either pcps4 or xbox (default "pcps4")
--ranks string
-    REQUIRED: CSV file with team ranks
--week int
-    The number of the week (default 1)
+  -format string
+        One of 3v3/2v2/1v1 (default "3v3")
+  -platform string
+        Either pcps4 or xbox (default "pcps4")
+  -team1 string
+        Team 1 name
+  -team2 string
+        Team 2 name
+  -groups string
+        REQUIRED IF TEAM1 and TEAM2 are empty: CSV file with previous team groups
+  -ranks string
+        REQUIRED IF TEAM1 and TEAM2 are empty: CSV file with team ranks
+  -week int
+        The number of the week (default 1)
 ```
 
+### Manual Matchmaking
+
+Simply run the `cli`, specifying the team names, platform, format, and week:
+`./cli --week 3 --format 2v2 --platform pcps4 -team1 "Team Rocket" -team2 "No Boost No Problem"`
+
+This will output both `Team Rocket vs No Boost No Problems` and `No Boost No Problems` in Reddit and ORSA website markdown:
+
+```
+<----------REDDIT FORMAT---------->
+
+**Groups for Week 3 of the 2v2 PCPS4 league are as follows:**
+
+Group 1: Team Rocket, No Boost No Problem
+
+[Team Rocket vs No Boost No Problem](https://muut.com/arlchampionships#!/week-3-2v2-pcps4:team-rocket-vs-no-boost-no)
+
+[No Boost No Problem vs Team Rocket](https://muut.com/arlchampionships#!/week-3-2v2-pcps4:no-boost-no-problem-vs-team)
+
+<----------ORSA FORMAT---------->
+
+<button class=”orsa-accordion”>Team Rocket vs No Boost No Problem</button>
+<div class=”orsa-muut-thread”>
+<a class=”muut” href=”https://muut.com/arlchampionships#!/week-3-2v2-pcps4:team-rocket-vs-no-boost-no/comments”></a>
+<script src=”//cdn.muut.com/1/moot.min.js”></script>
+</div>
+<button class=”orsa-accordion”>No Boost No Problem vs Team Rocket</button>
+<div class=”orsa-muut-thread”>
+<a class=”muut” href=”https://muut.com/arlchampionships#!/week-3-2v2-pcps4:no-boost-no-problem-vs-team/comments”></a>
+<script src=”//cdn.muut.com/1/moot.min.js”></script>
+```
+
+### Automatic Matchmaking
 Download your spreadsheets as individual CSV files (File -> Download As in google docs), and save them somewhere convenient.
 
 Once you have a file for the previous groups and the current ranks, just run

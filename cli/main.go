@@ -52,14 +52,16 @@ func readGroups(fileName *string) GroupMap {
     return groups
 }
 
-var rankFileName = flag.String("ranks", "", "REQUIRED: CSV file with team ranks")
-var groupsFileName = flag.String("groups", "", "REQUIRED: CSV file with previous team groups")
+var rankFileName = flag.String("ranks", "", "REQUIRED IF TEAM1 and TEAM2 are empty: CSV file with team ranks")
+var groupsFileName = flag.String("groups", "", "REQUIRED IF TEAM1 and TEAM2 are empty: CSV file with previous team groups")
 var platform = flag.String("platform", "pcps4", "Either pcps4 or xbox")
 var format = flag.String("format", "3v3", "One of 3v3/2v2/1v1")
 var week = flag.Int("week", 1, "The number of the week")
+var team1 = flag.String("team1", "", "Team 1 name")
+var team2 = flag.String("team2", "", "Team 2 name")
 
 func checkFlags() bool {
-    return *rankFileName != "" && *groupsFileName != ""
+    return (*team1 != "" && *team2 != "") || (*rankFileName != "" && *groupsFileName != "")
 }
 
 func PlaceExtraTeam(matches *[]orsa.MatchGroup, ranks *orsa.RankedList, groups GroupMap) {
@@ -220,6 +222,26 @@ func main() {
     if ok := checkFlags(); !ok {
         fmt.Println("One or more required flags were missing...")
         flag.PrintDefaults()
+        return
+    }
+
+    if *team1 != "" && *team2 != "" {
+        //Print markup for team names
+        teamRank1 := orsa.TeamRank{Name: *team1}
+        teamRank2 := orsa.TeamRank{Name: *team2}
+        //match group with one empty match
+        fakeMatch := []orsa.MatchGroup{{}}
+        fakeMatch[0].Teams[0] = teamRank1
+        fakeMatch[0].Teams[1] = teamRank2
+        fakeMatch[0].N = 2
+
+        fmt.Println("<----------REDDIT FORMAT---------->\n")
+        PrintMatchesReddit(fakeMatch)
+        fmt.Println("<----------ORSA FORMAT---------->\n")
+        PrintMatchesORSA(fakeMatch)
+        fmt.Println("\n\n<----------PLAIN GROUPS FORMAT---------->\n")
+        PrintMatchesFlat(fakeMatch)
+     
         return
     }
 
