@@ -12,7 +12,7 @@ type MatchGroup struct {
     AvgPoints float64
 }
 
-func (m MatchGroup) ToString (groupNumber int, weekNumber int, platform string, format string) string {
+func (m MatchGroup) ToStringReddit (groupNumber int, weekNumber int, platform string, format string) string {
     const MuutBaseUrl string = "https://muut.com/arlchampionships#!"
     const MuutPCPS4Format string = "[%s](%s/week-%d-%s-pcps4:%s)"
     const MuutXboxFormat string = "[%s](%s/week-%d-xbox-all-formats:%s)"
@@ -52,6 +52,51 @@ func (m MatchGroup) ToString (groupNumber int, weekNumber int, platform string, 
     }
     outputStr += "\n\n" + teamMatches + "\n"
 
+
+    return outputStr
+}
+
+func (m MatchGroup) ToStringORSA (groupNumber int, weekNumber int, platform string, format string) string {
+    const MuutBaseUrl string = "https://muut.com/arlchampionships#!"
+    const MuutPCPS4Format string = "%s/week-%d-%s-pcps4:%s"
+    const MuutXboxFormat string = "%s/week-%d-xbox-all-formats:%s"
+    const ORSAFormat string = `<button class="orsa-accordion">%s</button>
+<div class="orsa-muut-thread">
+<a class="muut" href="%s/comments"></a>
+<script src="//cdn.muut.com/1/moot.min.js"></script>
+</div>`
+
+    noSpecialChars, _ := regexp.Compile("[^A-Za-z0-9 ]+")
+
+    outputStr := ""
+    teamMatches := ""
+    for i, team := range m.Teams {
+        if team.Name == "" { continue }
+        //team matches with forum links
+        nextTeam := (i+1) % m.N
+        teamStr := team.Name + " vs " + m.Teams[nextTeam].Name
+        //remove special characters
+        teamStr = noSpecialChars.ReplaceAllString(teamStr, "")
+        //replace all spaces with hyphens
+        teamUrl := strings.Replace(strings.ToLower(teamStr), " ", "-", -1)
+
+        if len(teamUrl) > 27 {
+            teamUrl = teamUrl[:27]
+        }
+
+        teamUrl = strings.Trim(teamUrl, "-")
+
+        var muutURL string
+        if platform == "pcps4" {
+            muutURL = fmt.Sprintf(MuutPCPS4Format, MuutBaseUrl, weekNumber, format, teamUrl)
+        } else {
+            muutURL = fmt.Sprintf(MuutXboxFormat, MuutBaseUrl, weekNumber, teamUrl)
+        }
+
+        teamMatches += fmt.Sprintf(ORSAFormat, teamStr, muutURL)
+        teamMatches += "\n"
+    }
+    outputStr += teamMatches
 
     return outputStr
 }

@@ -191,7 +191,13 @@ func PrintMatchesReddit (matches []orsa.MatchGroup) {
     const MatchHeader string = "**Groups for Week %d of the %s %s league are as follows:**\n\n"
     fmt.Printf(MatchHeader, *week, *format, strings.ToUpper(*platform))
     for group, match := range matches {
-        fmt.Println(match.ToString(group+1, *week, *platform, *format))
+        fmt.Println(match.ToStringReddit(group+1, *week, *platform, *format))
+    }
+}
+
+func PrintMatchesORSA (matches []orsa.MatchGroup) {
+    for group, match := range matches {
+        fmt.Println(match.ToStringORSA(group+1, *week, *platform, *format))
     }
 }
 
@@ -271,6 +277,8 @@ func main() {
 
     fmt.Println("<----------REDDIT FORMAT---------->\n")
     PrintMatchesReddit(matches)
+    fmt.Println("<----------ORSA FORMAT---------->\n")
+    PrintMatchesORSA(matches)
     fmt.Println("\n\n<----------PLAIN GROUPS FORMAT---------->\n")
     PrintMatchesFlat(matches)
     fmt.Println("\n\n<----------RESULTS---------->\n")
