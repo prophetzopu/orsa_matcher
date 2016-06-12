@@ -54,9 +54,11 @@ The CLI has a number of options
 ### Manual Matchmaking
 
 Simply run the `cli`, specifying the team names, platform, format, and week:
-`./cli --week 3 --format 2v2 --platform pcps4 -team1 "Team Rocket" -team2 "No Boost No Problem"`
+```
+./cli --week 3 --format 2v2 --platform pcps4 -team1 "Team Rocket" -team2 "No Boost No Problem"
+```
 
-This will output both `Team Rocket vs No Boost No Problems` and `No Boost No Problems` in Reddit and ORSA website markdown:
+This will output both `Team Rocket vs No Boost No Problems` and `No Boost No Problems vs Team Rocket` in Reddit and ORSA website markdown:
 
 ```
 <----------REDDIT FORMAT---------->
