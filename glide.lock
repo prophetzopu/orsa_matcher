@@ -1,0 +1,6 @@
+hash: 045a84e8666cb0e617a780506ea59f221fa165ad69c84235adca8b7269cfbb24
+updated: 2016-06-16T22:50:20.556120478-04:00
+imports:
+- name: github.com/gocarina/gocsv
+  version: 3723b84bcbff2ea9ab8d6fd2092aa040a904249a
+devImports: []

@@ -1,0 +1,3 @@
+package: github.com/adamschaub/orsa_matcher
+import:
+- package: github.com/gocarina/gocsv
