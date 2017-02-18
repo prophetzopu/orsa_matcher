@@ -13,10 +13,6 @@ type MatchGroup struct {
 }
 
 func (m MatchGroup) ToStringReddit (groupNumber int, weekNumber int, platform string, format string) string {
-    const MuutBaseUrl string = "https://muut.com/arlchampionships#!"
-    const MuutPCPS4Format string = "[%s](%s/week-%d-%s-pcps4:%s)"
-    const MuutXboxFormat string = "[%s](%s/week-%d-xbox-all-formats:%s)"
-
     noSpecialChars, _ := regexp.Compile("[^A-Za-z0-9 ]+")
 
     outputStr := fmt.Sprintf("Group %d: ", groupNumber)
@@ -34,20 +30,8 @@ func (m MatchGroup) ToStringReddit (groupNumber int, weekNumber int, platform st
         teamStr := team.Name + " vs " + m.Teams[nextTeam].Name
         //remove special characters
         teamStr = noSpecialChars.ReplaceAllString(teamStr, "")
-        //replace all spaces with hyphens
-        teamUrl := strings.Replace(strings.ToLower(teamStr), " ", "-", -1)
 
-        if len(teamUrl) > 27 {
-            teamUrl = teamUrl[:27]
-        }
-
-        teamUrl = strings.Trim(teamUrl, "-")
-
-        if platform == "pcps4" {
-            teamMatches += fmt.Sprintf(MuutPCPS4Format, teamStr, MuutBaseUrl, weekNumber, format, teamUrl)
-        } else {
-            teamMatches += fmt.Sprintf(MuutXboxFormat, teamStr, MuutBaseUrl, weekNumber, teamUrl)
-        }
+        teamMatches += teamStr
         teamMatches += "\n\n"
     }
     outputStr += "\n\n" + teamMatches + "\n"

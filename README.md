@@ -67,9 +67,9 @@ This will output both `Team Rocket vs No Boost No Problems` and `No Boost No Pro
 
 Group 1: Team Rocket, No Boost No Problem
 
-[Team Rocket vs No Boost No Problem](https://muut.com/arlchampionships#!/week-3-2v2-pcps4:team-rocket-vs-no-boost-no)
+Team Rocket vs No Boost No Problem
 
-[No Boost No Problem vs Team Rocket](https://muut.com/arlchampionships#!/week-3-2v2-pcps4:no-boost-no-problem-vs-team)
+No Boost No Problem vs Team Rocket
 
 <----------ORSA FORMAT---------->
 
