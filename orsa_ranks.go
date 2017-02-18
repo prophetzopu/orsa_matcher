@@ -36,7 +36,6 @@ func (m MatchGroup) ToStringReddit (groupNumber int, weekNumber int, platform st
     }
     outputStr += "\n\n" + teamMatches + "\n"
 
-
     return outputStr
 }
 
