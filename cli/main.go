@@ -8,7 +8,7 @@ import (
     "bufio"
     "strings"
     "container/heap"
-    orsa "github.com/adamschaub/orsa_matcher"
+    orsa "github.com/prophetzopu/orsa_matcher"
     "github.com/gocarina/gocsv"
 )
 

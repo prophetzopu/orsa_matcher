@@ -17,7 +17,7 @@ C:\Users\me\path\to\my\project>set GOPATH=C:\Users\me\path\to\my\project
 
 Pull down this project
 ```
-C:\project>go get github.com/adamschaub/orsa_matcher
+C:\project>go get github.com/prophetzopu/orsa_matcher
 ```
 
 This is a lazy project, so you have to install dependencies yourself :(
@@ -27,8 +27,8 @@ C:\project>go get -u github.com/gocarina/gocsv
 
 Then build the project
 ```
-C:\project>go build github.com/adamschaub/orsa_matcher
-C:\project>go build github.com/adamschaub/orsa_matcher/cli
+C:\project>go build github.com/prophetzopu/orsa_matcher
+C:\project>go build github.com/prophetzopu/orsa_matcher/cli
 ```
 
 ## Running
