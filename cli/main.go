@@ -237,8 +237,8 @@ func main() {
 
         fmt.Println("<----------REDDIT FORMAT---------->\n")
         PrintMatchesReddit(fakeMatch)
-        fmt.Println("<----------ORSA FORMAT---------->\n")
-        PrintMatchesORSA(fakeMatch)
+        // fmt.Println("<----------ORSA FORMAT---------->\n")
+        // PrintMatchesORSA(fakeMatch)
         fmt.Println("\n\n<----------PLAIN GROUPS FORMAT---------->\n")
         PrintMatchesFlat(fakeMatch)
      
@@ -299,8 +299,8 @@ func main() {
 
     fmt.Println("<----------REDDIT FORMAT---------->\n")
     PrintMatchesReddit(matches)
-    fmt.Println("<----------ORSA FORMAT---------->\n")
-    PrintMatchesORSA(matches)
+    // fmt.Println("<----------ORSA FORMAT---------->\n")
+    // PrintMatchesORSA(matches)
     fmt.Println("\n\n<----------PLAIN GROUPS FORMAT---------->\n")
     PrintMatchesFlat(matches)
     fmt.Println("\n\n<----------RESULTS---------->\n")
